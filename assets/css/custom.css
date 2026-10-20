@@ -1,0 +1,270 @@
+/* ==========================================================================
+   NEXUS CORE - FUTURISTIC DARK / NEON TECH STYLESHEET
+   Lightweight, 60 FPS Optimized CSS (Zero Heavy Canvas / 3D Libraries)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --neon-cyan: #00f0ff;
+  --neon-cyan-glow: rgba(0, 240, 255, 0.35);
+  --neon-purple: #a855f7;
+  --neon-purple-glow: rgba(168, 85, 247, 0.35);
+  --neon-emerald: #10b981;
+  --neon-emerald-glow: rgba(16, 185, 129, 0.35);
+  --neon-amber: #f59e0b;
+  --neon-amber-glow: rgba(245, 158, 11, 0.35);
+  --neon-rose: #f43f5e;
+  
+  --bg-deep: #06080f;
+  --bg-card: rgba(14, 19, 32, 0.75);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(0, 240, 255, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-deep);
+  color: #e2e8f0;
+  overflow-x: hidden;
+  selection-background-color: #00f0ff;
+  selection-color: #000;
+}
+
+::selection {
+  background: rgba(0, 240, 255, 0.3);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #06080f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+  box-shadow: 0 0 10px var(--neon-cyan-glow);
+}
+
+/* Featherweight Cyber Grid Background (Pure CSS - zero CPU drain) */
+.cyber-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+/* Lightweight Glassmorphism Card Style */
+.glass-panel {
+  background: rgba(13, 18, 30, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease, 
+              box-shadow 0.25s ease,
+              background 0.25s ease;
+  will-change: transform;
+}
+.glass-panel-hover:hover {
+  background: rgba(18, 25, 42, 0.9);
+  border-color: rgba(0, 240, 255, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -8px rgba(0, 240, 255, 0.18);
+}
+
+/* Neon Glow Accents */
+.glow-cyan {
+  box-shadow: 0 0 18px -3px var(--neon-cyan-glow);
+}
+.glow-purple {
+  box-shadow: 0 0 18px -3px var(--neon-purple-glow);
+}
+.glow-emerald {
+  box-shadow: 0 0 18px -3px var(--neon-emerald-glow);
+}
+.glow-amber {
+  box-shadow: 0 0 18px -3px var(--neon-amber-glow);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 16px rgba(0, 240, 255, 0.5);
+}
+.text-glow-purple {
+  text-shadow: 0 0 16px rgba(168, 85, 247, 0.5);
+}
+
+/* Animated Border Glow */
+.neon-border-animated {
+  position: relative;
+  isolation: isolate;
+}
+.neon-border-animated::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(90deg, #00f0ff, #a855f7, #10b981, #00f0ff);
+  background-size: 300% 300%;
+  animation: borderRotate 6s linear infinite;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Code Playground Styles */
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Terminal Cursor */
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background-color: #00f0ff;
+  vertical-align: middle;
+  animation: cursorBlink 1s infinite;
+}
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ==========================================================================
+   CODE LEARNING PUZZLE MINI-GAME STYLES
+   ========================================================================== */
+.code-slot-area {
+  min-height: 58px;
+  border: 2px dashed rgba(0, 240, 255, 0.3);
+  background: rgba(4, 7, 13, 0.7);
+  transition: all 0.2s ease;
+}
+
+.code-slot-area.correct {
+  border-color: rgba(16, 185, 129, 0.7);
+  background: rgba(6, 40, 25, 0.4);
+  box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.3);
+}
+
+.code-slot-area.error {
+  border-color: rgba(244, 63, 94, 0.7);
+  background: rgba(45, 10, 20, 0.4);
+  box-shadow: 0 0 20px -3px rgba(244, 63, 94, 0.3);
+  animation: shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-2px, 0, 0); }
+  20%, 80% { transform: translate3d(4px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-5px, 0, 0); }
+  40%, 60% { transform: translate3d(5px, 0, 0); }
+}
+
+/* Code Option Tiles */
+.code-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.75rem;
+  background: rgba(18, 25, 42, 0.9);
+  color: #38bdf8;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.code-tile:hover {
+  background: rgba(0, 240, 255, 0.18);
+  border-color: #00f0ff;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 240, 255, 0.25);
+}
+
+.code-tile:active {
+  transform: scale(0.96);
+}
+
+.code-tile.placed {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.6);
+  color: #e9d5ff;
+}
+
+.code-tile.placed:hover {
+  background: rgba(244, 63, 94, 0.25);
+  border-color: #f43f5e;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   DAILY REWARDS SPIN WHEEL STYLES
+   ========================================================================== */
+.wheel-outer-ring {
+  position: relative;
+  border-radius: 50%;
+  padding: 10px;
+  background: linear-gradient(135deg, #00f0ff, #a855f7, #f59e0b, #00f0ff);
+  box-shadow: 0 0 35px -5px rgba(0, 240, 255, 0.4), inset 0 0 20px rgba(0,0,0,0.8);
+}
+
+.wheel-inner {
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 4.5s cubic-bezier(0.12, 0.95, 0.18, 1);
+  will-change: transform;
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 26px solid #f43f5e;
+  filter: drop-shadow(0 0 10px rgba(244, 63, 94, 0.8));
+  z-index: 25;
+  pointer-events: none;
+}
+
+/* Custom Checkbox / Radio styling */
+input[type="checkbox"], input[type="radio"] {
+  accent-color: #00f0ff;
+}
+
+/* Responsive modal backdrop */
+.modal-backdrop {
+  background-color: rgba(4, 7, 13, 0.85);
+  backdrop-filter: blur(12px);
+}
